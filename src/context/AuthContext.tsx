@@ -7,7 +7,9 @@ export default function AuthContext({
 }: {
     children: React.ReactNode
 }) {
-    return <SessionProvider>
-        {children}
-    </SessionProvider>
+    return (
+        <SessionProvider>
+            {children}
+        </SessionProvider>
+    )
 }
