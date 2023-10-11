@@ -9,7 +9,7 @@ import AuthContext from '../context/AuthContext'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${process.env.CLIENT_URL}`),
+  metadataBase: new URL(`https://eshop-blue.vercel.app`),
   title: {
     default: 'E-Shop',
     template: `%s | E-shop`
