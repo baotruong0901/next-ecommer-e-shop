@@ -3,7 +3,7 @@ import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";
 import CartItem from "./components/CartItem";
 import { Metadata } from "next";
-import CartPageSkeletion from "./components/CartPageSkeletion";
+
 export async function generateMetadata(): Promise<Metadata> {
     try {
         return {
@@ -58,7 +58,6 @@ const cartPage = async () => {
                     })}
                 </div>
             </div>
-            <CartPageSkeletion />
         </>
     );
 }
