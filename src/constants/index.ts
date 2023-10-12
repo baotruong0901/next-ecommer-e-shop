@@ -13,7 +13,7 @@ export const NavLinks = [
 
 export const footerLinks = [
     {
-        title: 'Thương Hiệu',
+        title: 'Danh Mục',
         options: [
             { key: 'Điện Thoại', href: `/product?category=Điện+Thoại&id=65229af45126bd69b0594c63` },
             { key: 'Đồng Hồ Thông Minh', href: '/product?category=Đồng%20hồ%20thông%20minh&id=6522af371b12a852c5842bf8' },
@@ -46,7 +46,7 @@ export const OptionsPrice = [
 
 export const sidebarLoginLinks = [
     {
-        label: 'Đơn hàng của bạn',
+        label: 'Đơn hàng',
         href: '/order',
         icon: BsFillCartCheckFill,
     },

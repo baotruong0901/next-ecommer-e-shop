@@ -12,7 +12,7 @@ const DescriptionDetail = ({ data }: Props) => {
 
     return (
         <div className="flex flex-col gap-4 md:flex-row">
-            <div className={`${isMore ? 'h-full' : 'h-[60vh]'} w-full overflow-hidden relative p-2 sm:p-4 sm:pb-16 pb-16 bg-white rounded-sm shadow-sm md:w-3/5 lg:w-3/4`}>
+            <div className={`${isMore ? 'h-full' : 'h-[40vh] md:h-[60vh]'} w-full overflow-hidden relative p-2 sm:p-4 sm:pb-16 pb-16 bg-white rounded-sm shadow-sm md:w-3/5 lg:w-3/4`}>
                 <h2 className="text-2xl mb-4 font-semibold">Mô tả</h2>
                 <div dangerouslySetInnerHTML={{
                     __html: data,

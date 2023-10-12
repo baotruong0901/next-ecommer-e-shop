@@ -1,12 +1,10 @@
 "use client"
 
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { IoMdClose } from "react-icons/io";
 import { SearchBox } from "..";
-import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { sidebarLoginLinks, sidebarLogoutLinks } from "@/constants";
 import SidebarItem from "../SidebarItem";
 
@@ -16,12 +14,7 @@ interface Props {
 }
 
 const Drawer = ({ isOpen, onClose }: Props) => {
-    const [confirmOpen, setConfirmOpen] = useState(false)
     const session = useSession()
-    const pathname = usePathname()
-
-    // const active = ((pathname?.includes(href) && href.length > 1) || pathname === href)
-
 
     return (
         <>
@@ -118,10 +111,6 @@ const Drawer = ({ isOpen, onClose }: Props) => {
                             </div>
                         </div>
                     </div>
-                    {/* <ConfirmModal
-                        isOpen={confirmOpen}
-                        onClose={() => setConfirmOpen(false)}
-                    /> */}
                 </Dialog>
             </Transition.Root>
         </>

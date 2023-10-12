@@ -26,29 +26,33 @@ const CartItem = ({ data }: { data: any }) => {
     }
 
     return (
-        <div className="grid grid-cols-6 sm:grid-cols-5 gap-4 text-sx md:text-sm text-slate-500 py-4 border-t-[1.5px] items-center">
-            <div className="col-span-3 sm:col-span-2 flex gap-2 sm:gap-4 items-center justify-self-start">
+        <div className="sm:grid flex flex-col w-full sm:grid-cols-5 sm:gap-4 gap-2 text-sx md:text-sm text-slate-500 py-4 border-t-[1.5px] border-gray-400">
+            <div className="col-span-3 sm:col-span-2 flex sm:gap-4 gap-8 items-center justify-self-start">
                 <Link href={`/product/${data._id}`}>
-                    <div className="relative aspect-square w-[70px]">
+                    <div className="relative aspect-square w-20 h">
                         <Image src={data.images[0]}
                             alt={data.title}
                             fill className="object-contain"
                         />
                     </div>
                 </Link>
-                <div className="flex flex-col justify-between gap-1 ">
-                    <Link href={`/product/${data._id}`}>
-                        {truncateText(data.title)}</Link>
+                <div className="flex flex-col ld:w-[300px] md:w-48 sm:w-32 w-64 justify-between gap-1 ">
+                    <Link
+                        href={`/product/${data._id}`}>
+                        <p className="truncate text-ellipsis overflow-hidden">
+                            {(data.title)}
+                        </p>
+                    </Link>
                     <span>{data.colors[0].name}</span>
                     <Button label="Remove" small outline onClick={() => handleDeleteProduct(data)} />
                 </div>
             </div>
 
-            <div className="justify-self-center">
+            <div className="sm:justify-self-center  max-sm:pl-28">
                 {formatPrice(data.price)}
             </div>
 
-            <div className="justify-self-center">
+            <div className="sm:justify-self-center max-sm:pl-28">
                 <SetQuantity cartCounter={false}
                     cartProduct={{
                         count: 1
@@ -56,7 +60,7 @@ const CartItem = ({ data }: { data: any }) => {
                 />
             </div>
 
-            <div className="justify-self-end font-semibold text-slate-700">
+            <div className="justify-self-end sm:block hidden font-semibold text-slate-700">
                 {formatPrice(data.price)}
             </div>
         </div>

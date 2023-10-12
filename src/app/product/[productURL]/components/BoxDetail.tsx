@@ -76,11 +76,12 @@ const BoxDetail = ({ data }: Props) => {
                                 <MdCheckCircle className='text-teal-300' size={20} />
                                 <span>Product added to cart</span>
                             </p>
-                            <div className="sm:max-w-[300px]">
-                                <Button label="View Cart" outline onClick={() => {
+                            <Button
+                                custom="md:w-[50%] w-full"
+                                label="View Cart" outline onClick={() => {
                                     router.push('/cart')
-                                }} />
-                            </div>
+                                }}
+                            />
                         </>
                         :
                         <>

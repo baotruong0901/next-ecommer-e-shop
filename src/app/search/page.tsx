@@ -6,6 +6,7 @@ import BoxOption from "./components/BoxOption";
 import { getCategories } from "@/libs/action/getCategories.action";
 import { getallBrand } from "@/libs/action/getAllBrand.action";
 import { Metadata } from "next";
+import Empty from "@/components/Empty";
 
 export async function generateMetadata({
     searchParams,
@@ -58,11 +59,11 @@ const page = async ({
                         Kết quả tìm kiếm cho từ khoá
                     </span>
                     <span className="text-red-500">
-                        &apos; {searchParams.keyword} &apos;
+                        &apos;{searchParams.keyword}&apos;
                     </span>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 mb-8">
                     <BoxOption
                         label="Loại Sản Phẩm"
                         type="category"
@@ -92,22 +93,7 @@ const page = async ({
                         />
                     </div>
                     :
-                    <div className="w-full flex justify-center items-center mb-20">
-                        <div className="flex flex-col items-center gap-4 justify-center">
-                            <div className="max-w-[288px] max-h-[288px]">
-                                <Image
-                                    src={'/images/noti-search.png'}
-                                    alt="nothing search"
-                                    className="object-contain"
-                                    width={288}
-                                    height={288}
-                                />
-                            </div>
-                            <h3 className="text-xl text-center font-medium text-gray-500">
-                                Rất tiếc chúng tôi không tìm thấy kết quả của dây &apos; {searchParams.keyword} &apos;
-                            </h3>
-                        </div>
-                    </div>
+                    <Empty keyword={searchParams.keyword!} className="relative md:h-64 md:w-72 h-40 w-full" />
                 }
             </div>
         </>
