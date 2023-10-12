@@ -18,7 +18,7 @@ const ProductPageSkeletion = () => {
                 </div>
             </div>
             <div className="mb-12">
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
                     {[... new Array(10)].map((item, index) => (
                         <ProductSkeleton key={index} />
                     ))}

@@ -4,7 +4,7 @@ const ProductSkeleton = () => {
     return (
         <>
             <div
-                className="lg:col-span-1 w-[200px] cursor-pointer border-[1px] border-slate-200 bg-slate-50 rounded-sm shadow-md"
+                className="lg:col-span-1 cursor-pointer border-[1px] border-slate-200 bg-slate-50 rounded-sm shadow-md"
             >
                 <div className="flex flex-col items-center w-full gap-1 ">
                     <div className="aspect-square overflow-hidden relative w-full">

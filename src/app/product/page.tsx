@@ -7,6 +7,7 @@ import MobileFilter from "./components/MobileFilter";
 import { getCategories } from "@/libs/action/getCategories.action";
 import { getallBrand } from "@/libs/action/getAllBrand.action";
 
+
 export async function generateMetadata({
     searchParams,
 }: {
@@ -69,6 +70,7 @@ const page = async ({
 
     return (
         <>
+
             <div className="flex items-start mt-8">
                 <div className="w-1/5 lg:block hidden">
                     <SortProduct />
