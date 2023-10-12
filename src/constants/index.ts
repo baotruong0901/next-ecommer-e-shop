@@ -1,3 +1,8 @@
+import { signOut } from 'next-auth/react';
+import { BsFillCartCheckFill, BsPencilSquare } from 'react-icons/bs'
+import { GrUserAdmin } from 'react-icons/gr'
+import { BiLogOutCircle, BiLogInCircle } from 'react-icons/bi'
+
 export const NavLinks = [
     { href: '/', key: 'Inspiration', text: 'Inspiration' },
     { href: '/', key: 'Find Projects', text: 'Find Projects' },
@@ -37,4 +42,36 @@ export const OptionsPrice = [
     { value: "3000000-8000000", label: "Từ 3 - 8 triệu" },
     { value: "8000000-15000000", label: "Từ 8 - 15 triệu" },
     { value: "15000000-null", label: "Trên 15 triệu" },
+];
+
+export const sidebarLoginLinks = [
+    {
+        label: 'Đơn hàng của bạn',
+        href: '/order',
+        icon: BsFillCartCheckFill,
+    },
+    {
+        label: 'Quản Lý',
+        href: '/admin',
+        icon: GrUserAdmin,
+    },
+    {
+        label: 'Đăng xuất',
+        onClick: () => signOut(),
+        href: '#',
+        icon: BiLogOutCircle
+    }
+];
+
+export const sidebarLogoutLinks = [
+    {
+        label: 'Đăng nhập',
+        href: '/auth/login',
+        icon: BiLogInCircle,
+    },
+    {
+        label: 'Đăng ký',
+        href: '/auth/register',
+        icon: BsPencilSquare,
+    }
 ];

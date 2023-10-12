@@ -4,7 +4,6 @@ import Link from "next/link";
 import { CartCounter } from ".";
 import UserMenu from "./UserMenu";
 import { useState } from "react";
-import { BiMenuAltRight, BiX } from "react-icons/bi";
 
 const CartBox = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -15,19 +14,10 @@ const CartBox = () => {
                     <CartCounter />
                 </Link>
             </div>
-            <div onClick={() => setIsOpen(false)}>
+            <div
+                className="md:block hidden"
+                onClick={() => setIsOpen(false)}>
                 <UserMenu />
-            </div>
-            <div className="block md:hidden">
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className={`z-10`}
-                    type="button">
-                    {isOpen ?
-                        <BiX size={40} /> :
-                        <BiMenuAltRight size={40} />
-                    }
-                </button>
             </div>
         </>
     );

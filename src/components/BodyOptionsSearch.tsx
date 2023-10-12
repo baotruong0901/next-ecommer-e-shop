@@ -9,17 +9,23 @@ interface Props {
     data: ProductProps[],
     searchString?: string | null,
     onClose: () => void,
-    setSearchString: () => void
+    setSearchString: () => void,
+    onCloseToggle?: () => void
 }
 
-const BodyOptionsSearch = ({ data, searchString, onClose, setSearchString }: Props) => {
-    console.log("data", data);
+const BodyOptionsSearch = ({ data, searchString, onClose, setSearchString, onCloseToggle }: Props) => {
+
     const router = useRouter()
 
     const handleClick = (product: ProductProps) => {
         router.push(`/product/${product.slug}-${product._id}`)
         onClose()
         setSearchString()
+        if (onCloseToggle) {
+            console.log("ok");
+
+            onCloseToggle()
+        }
     }
     return (
         <div>

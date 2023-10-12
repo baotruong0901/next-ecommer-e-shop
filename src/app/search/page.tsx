@@ -103,7 +103,7 @@ const page = async ({
                                     height={288}
                                 />
                             </div>
-                            <h3 className="text-xl font-medium text-gray-500">
+                            <h3 className="text-xl text-center font-medium text-gray-500">
                                 Rất tiếc chúng tôi không tìm thấy kết quả của dây &apos; {searchParams.keyword} &apos;
                             </h3>
                         </div>

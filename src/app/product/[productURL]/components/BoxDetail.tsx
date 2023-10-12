@@ -88,14 +88,13 @@ const BoxDetail = ({ data }: Props) => {
                                 colors={colors}
                             />
                             <Horizontal />
-                            <div className="sm:max-w-[300px]">
-                                <Button
-                                    label="Add to cart"
-                                    onClick={() => {
-                                        handleAddProductToCart()
-                                    }}
-                                />
-                            </div>
+                            <Button
+                                custom="md:w-[50%] w-full"
+                                label="Add to cart"
+                                onClick={() => {
+                                    handleAddProductToCart()
+                                }}
+                            />
                         </>
                     }
                 </div>
