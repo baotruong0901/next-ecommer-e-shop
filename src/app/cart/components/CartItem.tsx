@@ -26,7 +26,7 @@ const CartItem = ({ data }: { data: any }) => {
     }
 
     return (
-        <div className="sm:grid flex flex-col w-full sm:grid-cols-5 sm:gap-4 gap-2 text-sx md:text-sm text-slate-500 py-4 border-t-[1.5px] border-gray-400">
+        <div className="sm:grid flex flex-col w-full sm:grid-cols-5 sm:gap-4 gap-2 text-sx md:text-sm text-slate-500 py-4 border-t-[1.5px] border-gray-300">
             <div className="col-span-3 sm:col-span-2 flex sm:gap-4 gap-8 items-center justify-self-start">
                 <Link href={`/product/${data._id}`}>
                     <div className="relative aspect-square w-20 h">

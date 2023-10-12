@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";
 import CartItem from "./components/CartItem";
 import { Metadata } from "next";
+import CartPageSkeletion from "./components/CartPageSkeletion";
 export async function generateMetadata(): Promise<Metadata> {
     try {
         return {
@@ -38,24 +39,27 @@ const cartPage = async () => {
         );
     }
     return (
-        <div className="sm:my-8 my-4 px-2 sm:py-0">
-            <div className={'text-center mb-3'}>
-                <h2 className="font-bold sm:text-2xl text-xl">Giỏ hàng</h2>
+        <>
+            <div className="sm:my-8 my-4 px-2 sm:py-0">
+                <div className={'text-center mb-3'}>
+                    <h2 className="font-bold sm:text-2xl text-xl">Giỏ hàng</h2>
+                </div>
+                <div className=" sm:grid hidden grid-cols-6 sm:grid-cols-5 text-xs gap-4 pb-2 items-center mt-8 text-slate-500">
+                    <div className=" col-span-3 sm:col-span-2 justify-self-start">SẢN PHẨM</div>
+                    <div className="justify-self-center">GIÁ</div>
+                    <div className="justify-self-center">SỐ LƯỢNG</div>
+                    <div className="justify-self-end">TỔNG</div>
+                </div>
+                <div>
+                    {products.map((item: any) => {
+                        return (
+                            <CartItem key={item._id} data={item} />
+                        )
+                    })}
+                </div>
             </div>
-            <div className=" sm:grid hidden grid-cols-6 sm:grid-cols-5 text-xs gap-4 pb-2 items-center mt-8 text-slate-500">
-                <div className=" col-span-3 sm:col-span-2 justify-self-start">SẢN PHẨM</div>
-                <div className="justify-self-center">GIÁ</div>
-                <div className="justify-self-center">SỐ LƯỢNG</div>
-                <div className="justify-self-end">TỔNG</div>
-            </div>
-            <div>
-                {products.map((item: any) => {
-                    return (
-                        <CartItem key={item._id} data={item} />
-                    )
-                })}
-            </div>
-        </div>
+            <CartPageSkeletion />
+        </>
     );
 }
 

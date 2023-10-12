@@ -71,6 +71,7 @@ const Drawer = ({ isOpen, onClose }: Props) => {
                                                             <>
                                                                 {session?.data?.user?.userType === "ADMIN" ? sidebarLoginLinks.map((item) => (
                                                                     <SidebarItem
+                                                                        key={item.label}
                                                                         href={item.href}
                                                                         icon={item.icon}
                                                                         label={item.label}
@@ -81,6 +82,8 @@ const Drawer = ({ isOpen, onClose }: Props) => {
                                                                     :
                                                                     sidebarLoginLinks.filter((link) => link.href !== "/admin").map((item) => (
                                                                         <SidebarItem
+                                                                            key={item.label}
+
                                                                             href={item.href}
                                                                             icon={item.icon}
                                                                             label={item.label}
@@ -94,6 +97,8 @@ const Drawer = ({ isOpen, onClose }: Props) => {
                                                             <>
                                                                 {sidebarLogoutLinks.map((item) => (
                                                                     <SidebarItem
+                                                                        key={item.label}
+
                                                                         href={item.href}
                                                                         icon={item.icon}
                                                                         label={item.label}
