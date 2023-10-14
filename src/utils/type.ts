@@ -1,12 +1,9 @@
-export interface AuthProps {
-    isAuth: boolean,
+export interface UserProps {
     _id: string,
-    firstname: string,
-    lastname: string,
+    name: string,
     email: string,
-    mobile: string,
-    role: string,
-    token: string
+    phone: string,
+    avatar: string | null
 }
 
 export interface CategoryProps {
@@ -25,6 +22,27 @@ export interface ColorProps {
     _id: string;
     name: string;
     code: string;
+}
+
+export interface CartProps {
+    _id: string,
+    products: {
+        _id: string,
+        count: number,
+        color: ColorProps,
+        product: {
+            _id: string,
+            title: string,
+            price: number,
+            categories: CategoryProps[],
+            brand: BrandProps,
+            images: string[]
+        }
+    }[],
+    user: UserProps,
+    createdAt: string,
+    updatedAt: string,
+    __v: number
 }
 
 export interface RatingProps {

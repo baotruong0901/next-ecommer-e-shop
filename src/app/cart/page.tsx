@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";
 import CartItem from "./components/CartItem";
 import { Metadata } from "next";
+import { getCart } from "@/libs/action/getCart.action";
 
 export async function generateMetadata(): Promise<Metadata> {
     try {
@@ -20,8 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const cartPage = async () => {
-    const products = await getAllProduct({})
-    if (!products || products?.length === 0) {
+    const cart = await getCart()
+    if (!cart || cart.products?.length === 0) {
         return (
             <div className="h-[70vh]">
                 <div className="w-full flex justify-center items-center h-full">
@@ -38,6 +39,7 @@ const cartPage = async () => {
             </div>
         );
     }
+
     return (
         <>
             <div className="sm:my-8 my-4 px-2 sm:py-0">
@@ -51,7 +53,7 @@ const cartPage = async () => {
                     <div className="justify-self-end">TỔNG</div>
                 </div>
                 <div>
-                    {products.map((item: any) => {
+                    {cart.products.map((item: any) => {
                         return (
                             <CartItem key={item._id} data={item} />
                         )

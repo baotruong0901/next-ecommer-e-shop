@@ -1,22 +1,19 @@
-'use client'
-
 import Link from "next/link";
 import { CartCounter } from ".";
 import UserMenu from "./UserMenu";
-import { useState } from "react";
+import { getCart } from "@/libs/action/getCart.action";
 
-const CartBox = () => {
-    const [isOpen, setIsOpen] = useState(false)
+const CartBox = async () => {
+    const cart = await getCart()
     return (
         <>
-            <div onClick={() => setIsOpen(false)}>
+            <div>
                 <Link prefetch={false} href={'/cart'}>
-                    <CartCounter />
+                    <CartCounter cart={cart} />
                 </Link>
             </div>
             <div
-                className="md:block hidden"
-                onClick={() => setIsOpen(false)}>
+                className="md:block hidden">
                 <UserMenu />
             </div>
         </>

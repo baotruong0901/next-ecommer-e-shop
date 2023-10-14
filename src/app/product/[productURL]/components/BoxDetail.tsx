@@ -1,11 +1,15 @@
 'use client'
 
 import { BreadCrumd, Button, ProductImg, SetColor } from "@/components";
+import { postProductToCart } from "@/libs/action/postProductToCart.action";
 import { formatPrice } from "@/utils/formatPrice";
 import { ProductProps } from "@/utils/type";
 import { Rating } from "@mui/material";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { notFound, useRouter } from "next/navigation";
-import { useState } from "react";
+import { startTransition, useState } from "react";
+import toast from "react-hot-toast";
 import { MdCheckCircle } from "react-icons/md";
 
 export const Horizontal = () => {
@@ -17,9 +21,13 @@ interface Props {
 }
 
 const BoxDetail = ({ data }: Props) => {
-    const { title, images, price, coupon, brand, colors } = data
+    const { _id, title, slug, images, price, coupon, brand, colors } = data
+    const session = useSession()
+    console.log(session);
+
     const router = useRouter()
     const [isAddToCart, setIsAddToCart] = useState(false)
+    const [selected, setIsSelected] = useState<string | null>(null)
 
     const breadcrumbPaths = [
         { label: 'Trang chủ', link: '/' },
@@ -28,9 +36,39 @@ const BoxDetail = ({ data }: Props) => {
         { label: `${data.title}` },
     ];
 
-    const handleAddProductToCart = () => {
-        setIsAddToCart(true)
+    const handleAddProductToCart = async () => {
+        if (session.status === "unauthenticated") {
+            router.push(`/auth/login?callbackUrl=%2Fproduct%2F${slug}-${_id}`)
+        } else {
+            try {
+                if (!selected) {
+                    toast.error('Choose color!')
+                    console.log(_id, selected);
+
+                } else {
+                    const res = await postProductToCart(_id, selected, 1, session?.data)
+                    console.log(res);
+
+                    if (res) {
+                        toast.success('Succeed!')
+                        setIsAddToCart(true)
+                    }
+                }
+
+            } catch (error: any) {
+                toast.error('Error')
+                console.log(error);
+            } finally {
+                startTransition(() => {
+                    // Refresh the current route and fetch new data
+                    // from the server without losing
+                    // client-side browser or React state.
+                    router.refresh()
+                })
+            }
+        }
     }
+
 
     if (!data) { return notFound() }
 
@@ -76,17 +114,19 @@ const BoxDetail = ({ data }: Props) => {
                                 <MdCheckCircle className='text-teal-300' size={20} />
                                 <span>Product added to cart</span>
                             </p>
-                            <Button
-                                custom="md:w-[50%] w-full"
-                                label="View Cart" outline onClick={() => {
-                                    router.push('/cart')
-                                }}
-                            />
+                            <Link href={'/cart'}>
+                                <Button
+                                    custom="md:w-[50%] w-full"
+                                    label="View Cart" outline
+                                />
+                            </Link>
                         </>
                         :
                         <>
                             <SetColor
                                 colors={colors}
+                                selected={selected}
+                                setIsSelected={setIsSelected}
                             />
                             <Horizontal />
                             <Button
