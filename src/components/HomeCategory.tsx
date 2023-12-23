@@ -2,22 +2,19 @@
 
 import { CategoryProps } from "@/utils/type";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const HomeCategory = ({ categories }: { categories: CategoryProps[] }) => {
     const router = useRouter()
-
-    const handleClick = (category: any) => {
-        router.push(`/product?category=${encodeURIComponent(category?.name)}&id=${category?._id}`);
-    }
 
     return (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 overflow-hidden rounded-md shadow-sm bg-white">
             {categories?.map((category: CategoryProps) => {
                 const { _id, name, image } = category
                 return (
-                    <div
-                        onClick={() => handleClick(category)}
+                    <Link
+                        href={`/product?category=${encodeURIComponent(category?.name)}&id=${category?._id}`}
                         key={_id}
                         className={`flex flex-col items-center p-4 cursor-pointer gap-3 hover:bg-gray-100 transition border-[0.5px] border-gray-300`}
                     >
@@ -35,7 +32,7 @@ const HomeCategory = ({ categories }: { categories: CategoryProps[] }) => {
                         <p className="text-sm font-medium text-center text-zinc-900">
                             {name}
                         </p>
-                    </div>
+                    </Link>
                 )
             })}
         </div>

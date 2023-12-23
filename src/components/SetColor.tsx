@@ -6,12 +6,14 @@ import { useEffect, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 
 interface Props {
-    colors: ColorProps[]
+    colors: ColorProps[],
+    selected: string | null,
+    setIsSelected: (value: string) => void;
 }
 
-const SetColor = ({ colors }: Props) => {
+const SetColor = ({ colors, setIsSelected, selected }: Props) => {
     const [data, setData] = useState<ColorProps[]>(colors)
-    const [selected, setIsSelected] = useState<string | null>(null)
+    // const [selected, setIsSelected] = useState<string | null>(null)
     const router = useRouter()
 
     useEffect(() => {

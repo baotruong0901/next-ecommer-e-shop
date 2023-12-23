@@ -8,7 +8,11 @@ import { getAllProduct } from "@/libs/action/getAllProdcut.action";
 import { ProductProps } from "@/utils/type";
 import BackDrop from "./BackDrop";
 
-const SearchBox = () => {
+interface Props {
+    onClose?: () => void
+}
+
+const SearchBox = ({ onClose }: Props) => {
     const router = useRouter()
     const [searchString, setSearchString] = useState<string>("")
     const [isOpen, setIsOpen] = useState(false)
@@ -39,6 +43,10 @@ const SearchBox = () => {
             router.push(`/search?keyword=${searchString}`)
         }
         setIsOpen(false)
+        //close toggle mobile
+        if (onClose) {
+            onClose();
+        }
     }
 
     useEffect(() => {
@@ -81,6 +89,7 @@ const SearchBox = () => {
                             data={options!}
                             onClose={() => setIsOpen(false)}
                             setSearchString={() => setSearchString("")}
+                            onCloseToggle={onClose}
                         />
                     </div>
                     <BackDrop onClick={() => setIsOpen(false)} />

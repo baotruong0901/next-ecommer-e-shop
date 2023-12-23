@@ -16,14 +16,14 @@ const ProductDetailSkeletion = () => {
                     <div className="grid grid-cols-6 gap-2 h-full max-h-[500px] min-h-[300px] sm:min-h-[400px]">
                         <div className="flex flex-col items-center justify-center cursor-pointer gap-4 border h-full max-h-[500px] min-h-[300px] sm:min-h-[400px]">
                             {[... new Array(4)].map((index) => (
-                                <div key={index}>
-                                    <Skeleton variant="rectangular" animation="wave" width={70} height={70} />
+                                <div className="w-4/5 aspect-square" key={index}>
+                                    <Skeleton variant="rectangular" animation="wave" className="w-full h-full" />
                                 </div>
                             ))}
 
                         </div>
                         <div className="col-span-5 relative aspect-square">
-                            <Skeleton variant="rectangular" animation="wave" width={475} height={475} />
+                            <Skeleton variant="rectangular" animation="wave" className="w-full h-full" />
                         </div>
                     </div>
                     <div className="flex flex-col">
@@ -57,7 +57,7 @@ const ProductDetailSkeletion = () => {
                     <Skeleton animation="wave" variant="text" height={40} width={150} />
                     <Skeleton animation="wave" variant="text" height={20} width={100} />
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-6  gap-4">
+                <div className="flex lg:grid lg:grid-cols-6 gap-4 max-lg:overflow-x-scroll">
                     {[... new Array(6)].map((index) => (
                         <div key={index}>
                             <ProductSkeleton />

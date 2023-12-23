@@ -11,7 +11,7 @@ interface Props {
 }
 const BreadCrumd = ({ paths }: Props) => {
     return (
-        <Breadcrumbs aria-label="breadcrumb">
+        <Breadcrumbs aria-label="breadcrumb" >
             {paths.map((path, index) => (
                 index === paths.length - 1 ? (
                     <Typography key={index} className="text-gray-600">{path.label}</Typography>

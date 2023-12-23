@@ -34,13 +34,44 @@ const CategoryDetail = ({ data, category }: Props) => {
                     Xem tất cả
                 </button>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-6  gap-4">
+            <div className="flex lg:grid lg:grid-cols-6 gap-4 max-lg:overflow-x-scroll">
                 {products?.map((product: any) => (
                     <ProductCard
                         key={product._id}
                         product={product}
                     />
                 ))}
+                {products?.map((product: any) => (
+                    <ProductCard
+                        key={product._id}
+                        product={product}
+                    />
+                ))}
+                {products?.map((product: any) => (
+                    <ProductCard
+                        key={product._id}
+                        product={product}
+                    />
+                ))}
+                {products?.map((product: any) => (
+                    <ProductCard
+                        key={product._id}
+                        product={product}
+                    />
+                ))}
+                {products?.map((product: any) => (
+                    <ProductCard
+                        key={product._id}
+                        product={product}
+                    />
+                ))}
+                {products?.map((product: any) => (
+                    <ProductCard
+                        key={product._id}
+                        product={product}
+                    />
+                ))}
+
             </div >
         </div>
     );
